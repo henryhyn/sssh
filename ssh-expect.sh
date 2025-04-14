@@ -11,7 +11,7 @@ trap {
 	 stty rows $rows columns $cols < $spawn_out(slave,name)
 } WINCH
 
-spawn luit -encoding $ENCODING ssh -l $USER $TARGET -p $PORT
+spawn luit -encoding $ENCODING ssh -o ServerAliveInterval=30 -l $USER $TARGET -p $PORT
 
 expect {
  "yes/no" { send "yes\r"; exp_continue }
